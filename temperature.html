@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Температур Хөрвүүлэлт</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        select {
+            margin-bottom: 16px;
+        }
+
+        #result {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <label for="temperature">Температур:</label>
+    <input type="text" id="temperature" placeholder="Температур оруулах" required>
+    
+    <label for="unit">Хэмжих нэгж:</label>
+    <select id="unit">
+        <option value="celsius">Цельс</option>
+        <option value="fahrenheit">Фаренгейт</option>
+    </select>
+    
+    <button onclick="convertTemperature()">Хөрвүүлэх</button>
+    
+    <p id="result"></p>
+
+    <script>
+        function convertTemperature() {
+            var temperatureInput = document.getElementById("temperature").value;
+            var unitSelect = document.getElementById("unit");
+            var selectedUnit = unitSelect.options[unitSelect.selectedIndex].value;
+            var resultElement = document.getElementById("result");
+
+            if (selectedUnit === "celsius") {
+                // Celsius to Fahrenheit conversion
+                var fahrenheitValue = (temperatureInput * 9/5) + 32;
+                resultElement.textContent = "Температур: " + fahrenheitValue.toFixed(2) + "°F";
+            } else {
+                // Fahrenheit to Celsius conversion
+                var celsiusValue = (temperatureInput - 32) * 5/9;
+                resultElement.textContent = "Температур: " + celsiusValue.toFixed(2) + "°C";
+            }
+        }
+    </script>
+</body>
+</html>
