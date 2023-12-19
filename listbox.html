@@ -17,10 +17,10 @@
     </style>
 </head>
 <body>
-    <label for="flavors">names of 5 fruits:</label>
+    <label for="flavors">Тааж буй 5-н жимсийн нэр:</label>
     <select id="flavors" size="5" multiple>
         <option value="strawberry">strawberry</option>
-        <option value="blueberry">blueberry</option>
+        <option value="blueberyy">blueberry</option>
         <option value="watermelon">watermelon</option>
         <option value="banana">banana</option>
         <option value="apple">apple</option>
@@ -28,9 +28,12 @@
 
     <button onclick="submitSelection()">Илгээх</button>
 
+    <p id="result"></p>
+
     <script>
+        var selectedFlavors = [];
+
         function submitSelection() {
-            var selectedFlavors = [];
             var selectElement = document.getElementById("flavors");
 
             // Collect selected options
@@ -40,8 +43,9 @@
                 }
             }
 
-            // Display selected options (You can replace this part with sending data to the server)
-            alert("Сонгосон жимснүүд: " + selectedFlavors.join(", "));
+            // Display accumulated selected options
+            var resultElement = document.getElementById("result");
+            resultElement.textContent = "Сонгосон жимснүүд: " + selectedFlavors.join(", ");
         }
     </script>
 </body>
